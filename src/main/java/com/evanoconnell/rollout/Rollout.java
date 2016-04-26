@@ -6,11 +6,11 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class Rollout {
+public class Rollout<U extends IRolloutUser> {
 
 	private IRolloutStorage storage;
 
-	private Map<String,Predicate<IRolloutUser>> groups;
+	private Map<String,Predicate<U>> groups;
 
 	public Rollout(IRolloutStorage storage) {
 		this.storage = storage;
@@ -19,7 +19,7 @@ public class Rollout {
 		defineGroup("all", (user) -> user != null);
 	}
 
-	public void defineGroup(String group, Predicate<IRolloutUser> predicate) {
+	public void defineGroup(String group, Predicate<U> predicate) {
 		groups.put(group, predicate);
 	}
 
@@ -35,12 +35,12 @@ public class Rollout {
 		);
 	}
 
-	public boolean isActive(String feature, IRolloutUser user) {
+	public boolean isActive(String feature, U user) {
 		Feature f = get(feature);
 		return f.isActive(this, user);
 	}
 
-	public boolean isActiveInGroup(String group, IRolloutUser user) {
+	public boolean isActiveInGroup(String group, U user) {
 		if (groups.containsKey(group)) {
 			return groups.get(group).test(user);
 		}

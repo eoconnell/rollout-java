@@ -8,17 +8,17 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import com.evanoconnell.rollout.internal.User;
+public abstract class RolloutContractTest<U extends IRolloutUser> {
 
-public abstract class RolloutContractTest {
-
-	private Rollout rollout;
+	private Rollout<U> rollout;
 
 	/**
 	 *
 	 * @return
 	 */
-	public abstract Rollout createNewRolloutWithNoActiveFeatures();
+	public abstract Rollout<U> createNewRolloutWithNoActiveFeatures();
+
+	public abstract U createNewRolloutUser(long id);
 
 	@Before
 	public void beforeEach() {
@@ -28,7 +28,6 @@ public abstract class RolloutContractTest {
 	/**
 	 * The default 'all' group
 	 */
-
 	private void when_using_the_default_all_group() {
 		rollout.activateGroup("chat", "all");
 	}
@@ -37,7 +36,7 @@ public abstract class RolloutContractTest {
 	public void the_default_all_group__is_active_for_every_user() {
 		when_using_the_default_all_group();
 
-		assertThat(rollout.isActive("chat", new User(1)), is(true));
+		assertThat(rollout.isActive("chat", createNewRolloutUser(1)), is(true));
 	}
 
 	@Test
@@ -50,7 +49,6 @@ public abstract class RolloutContractTest {
 	/**
 	 * Activating a group
 	 */
-
 	private void when_a_group_is_activated() {
 		rollout.defineGroup("fivesonly", (user) ->
 			user.getId() == 5
@@ -63,7 +61,7 @@ public abstract class RolloutContractTest {
 
 		rollout.activateGroup("chat", "fivesonly");
 
-		assertThat(rollout.isActive("chat", new User(5)), is(true));
+		assertThat(rollout.isActive("chat", createNewRolloutUser(5)), is(true));
 	}
 
 	@Test
@@ -72,13 +70,12 @@ public abstract class RolloutContractTest {
 
 		rollout.activateGroup("chat", "fivesonly");
 
-		assertThat(rollout.isActive("chat", new User(10)), is(false));
+		assertThat(rollout.isActive("chat", createNewRolloutUser(10)), is(false));
 	}
 
 	/**
 	 * Deactivating a group
 	 */
-
 	private void when_deactivating_a_group() {
 		rollout.defineGroup("fivesonly", (user) -> user.getId() == 5);
 		when_using_the_default_all_group();
@@ -92,8 +89,8 @@ public abstract class RolloutContractTest {
 	public void when_deactivating_a_group__it_deactivates_the_rule_for_that_group() {
 		when_deactivating_a_group();
 
-		assertThat(rollout.isActive("chat", new User(10)), is(false));
-		assertThat(rollout.isActive("chat", new User(5)), is(true));
+		assertThat(rollout.isActive("chat", createNewRolloutUser(10)), is(false));
+		assertThat(rollout.isActive("chat", createNewRolloutUser(5)), is(true));
 	}
 
 	@Test
@@ -106,7 +103,6 @@ public abstract class RolloutContractTest {
 	/**
 	 * Activating features
 	 */
-
 	@Ignore("pending...")
 	@Test
 	public void activate_feature_off_then_on() {

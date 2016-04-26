@@ -24,12 +24,11 @@ public class Feature {
 		}
 	}
 
-
 	public void addGroup(String group) {
 		groups.add(group);
 	}
 
-	public boolean isActive(Rollout rollout, IRolloutUser user) {
+	public <U extends IRolloutUser> boolean isActive(Rollout<U> rollout, U user) {
 		for (String group : groups) {
 			boolean isActive = rollout.isActiveInGroup(group, user);
 			if (isActive) {

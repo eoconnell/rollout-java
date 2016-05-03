@@ -1,3 +1,5 @@
+*.dat
+*.log
 .classpath
 .project
 .settings/

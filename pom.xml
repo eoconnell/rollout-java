@@ -16,8 +16,8 @@
 
   <modules>
     <module>rollout-core</module>
-    <module>rollout-geode</module>
     <module>rollout-storage</module>
+    <module>rollout-storage-geode</module>
     <module>rollout-test-contract</module>
   </modules>
 

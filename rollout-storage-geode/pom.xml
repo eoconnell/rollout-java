@@ -9,7 +9,7 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
 
-  <artifactId>rollout-geode</artifactId>
+  <artifactId>rollout-storage-geode</artifactId>
   <packaging>jar</packaging>
   <name>Rollout Geode</name>
 

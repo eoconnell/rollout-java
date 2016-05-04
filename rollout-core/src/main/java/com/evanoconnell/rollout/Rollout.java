@@ -55,8 +55,7 @@ public class Rollout<U extends IRolloutUser> {
 	}
 
 	private void save(Feature f) {
-		String joined = f.getGroups().stream().collect(Collectors.joining(","));
-		storage.set(key(f.getName()), joined);
+		storage.set(key(f.getName()), f.serialize());
 	}
 
 	private Object key(String feature) {
@@ -67,6 +66,12 @@ public class Rollout<U extends IRolloutUser> {
 		Feature f = get(feature);
 		block.accept(f);
 		save(f);
+	}
+
+	public void activatePercentage(String feature, int percentage) {
+		withFeature(feature, (f) ->
+			f.setPercentage(percentage)
+		);
 	}
 
 }

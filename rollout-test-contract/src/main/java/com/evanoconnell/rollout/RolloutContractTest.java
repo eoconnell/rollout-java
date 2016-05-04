@@ -101,6 +101,21 @@ public abstract class RolloutContractTest<U extends IRolloutUser> {
 	}
 
 	/**
+	 * Percentage
+	 */
+
+	@Test
+	public void when_activating_for_a_percentage__100_percent_is_on_for_all_and_0_percent_is_off_for_all() {
+		rollout.activatePercentage("chat", 100);
+
+		assertThat(rollout.isActive("chat", createNewRolloutUser(1)), is(true));
+
+		rollout.activatePercentage("chat", 0);
+
+		assertThat(rollout.isActive("chat", createNewRolloutUser(1)), is(false));
+	}
+
+	/**
 	 * Activating features
 	 */
 	@Ignore("pending...")

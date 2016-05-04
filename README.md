@@ -95,14 +95,16 @@ If you're rolling out a new feature, you might want to test the waters by
 slowly enabling it for a percentage of your users.
 
 ```java
-// TODO
 rollout.activatePercentage("chat", 20);
 ```
 
 The algorithm for determining which users get let in is this:
 
-```ruby
-CRC32(user.id) % 100 < percentage
+```java
+// Feature.java
+private boolean userInPercentage(long id) {
+    return crc32(id) % 100 < percentage;
+}
 ```
 
 So, for 20%, users 0, 1, 10, 11, 20, 21, etc would be allowed in. Those users

@@ -14,36 +14,18 @@ With Maven:
 	<artifactId>rollout-core</artifactId>
 	<version>0.1.0-SNAPSHOT</version>
 </dependency>
-<dependency>
-	<groupId>com.evanoconnell</groupId>
-	<artifactId>rollout-storage</artifactId>
-	<version>0.1.0-SNAPSHOT</version>
-</dependency>
 ```
 
-## How it works
+## Usage
 
-Initialize a rollout object.
+Initialize a Rollout object.
 
 ```java
-IRolloutStorage storage = new MapStorage();
-Rollout<User> rollout = new Rollout(storage);
+IRolloutStorage storage;
+Rollout<IRolloutUser> rollout = new Rollout<>(storage);
 ```
 
-Check whether a feature is active for a particular user:
-
-```java
-rollout.isActive("chat", user); // => true/false
-```
-
-Check whether a feature is active globally:
-
-```java
-// TODO
-rollout.isActive("chat");
-```
-
-You can activate features using a number of different mechanisms.
+You can activate features using a number of different mechanisms: percentages, groups and by the user's id.
 
 ## Groups
 
@@ -56,11 +38,11 @@ You can activate the all group for the chat feature like this:
 rollout.activateGroup("chat", "all");
 ```
 
-You might also want to define your own groups. We have one for our caretakers:
+You might also want to define your own groups.
 
 ```java
-rollout.defineGroup("caretakers", (User u) ->
-  u.isCaretaker()
+rollout.defineGroup("admin", (User u) ->
+  u.hasRole("admin")
 );
 ```
 
@@ -89,6 +71,8 @@ Deactivate them like this:
 rollout.deactivateUser("chat", user);
 ```
 
+Note that user-specific activation relies on the `IRolloutUser` interface.
+
 ## User Percentages
 
 If you're rolling out a new feature, you might want to test the waters by
@@ -107,13 +91,18 @@ private boolean userInPercentage(long id) {
 }
 ```
 
-So, for 20%, users 0, 1, 10, 11, 20, 21, etc would be allowed in. Those users
-would remain in as the percentage increases.
+So for 20%, roughly 20% of your users should be let in. This also relies on the `IRolloutUser` interface.
 
 Deactivate all percentages like this:
 
 ```java
 rollout.deactivatePercentage("chat");
+```
+
+which is the same as:
+
+```java
+rollout.activatePercentage("chat", 0);
 ```
 
 _Note that activating a feature for 100% of users will also make it active

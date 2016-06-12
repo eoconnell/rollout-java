@@ -133,6 +133,14 @@ Deactivate everybody at once:
 rollout.deactivate("chat");
 ```
 
+## Storage
+
+You'll have to implement your own storage backend that implements `IRolloutStorage`. The storage API has two functions, `read` and `write`, both of which should be simple enough to implement.
+
+The `rollout-storage-local` module provides an in memory store (`MapStorage`) that you can look at for an example.
+
+You can test that your implementation conforms to the storage contract by writing a JUnit test that extends `StorageContractTest`. See `MapStorageTest.java` for an example.
+
 ## License
 
 Copyright © 2016 Evan O'Connell

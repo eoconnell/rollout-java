@@ -1,6 +1,6 @@
 # rollout (for Java)
 
-Feature flippers for Java. A port of ruby's [rollout](https://github.com/FetLife/rollout).
+Feature flippers for Java. A port of James Golick's/FetLife's [rollout](https://github.com/FetLife/rollout).
 
 Features marked with `TODO` are still being worked.
 
@@ -145,13 +145,8 @@ Deactivate everybody at once:
 rollout.deactivate("chat");
 ```
 
-## Implementations in other languages
+## License
 
-*   Ruby: https://github.com/FetLife/rollout
-*   Python: https://github.com/asenchi/proclaim
-*   PHP: https://github.com/opensoft/rollout
-*   Clojure: https://github.com/yeller/shoutout
+Copyright © 2016 Evan O'Connell
 
-## Copyright
-
-Copyright © 2010-InfinityAndBeyond BitLove, Inc. See LICENSE for details.
+Distributed under the MIT license

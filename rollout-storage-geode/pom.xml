@@ -11,7 +11,7 @@
 
   <artifactId>rollout-storage-geode</artifactId>
   <packaging>jar</packaging>
-  <name>Rollout Geode</name>
+  <name>Rollout Geode Storage</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

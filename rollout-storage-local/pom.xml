@@ -9,9 +9,9 @@
     <version>0.1.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>rollout-storage</artifactId>
+  <artifactId>rollout-storage-local</artifactId>
   <packaging>jar</packaging>
-  <name>Rollout Storage</name>
+  <name>Rollout Local Storage</name>
 
   <dependencies>
 	<dependency>

@@ -27,8 +27,8 @@
 
   <modules>
     <module>rollout-core</module>
-    <module>rollout-storage</module>
     <module>rollout-storage-geode</module>
+    <module>rollout-storage-local</module>
     <module>rollout-test-contract</module>
   </modules>
 

@@ -69,7 +69,7 @@ You can activate multiple groups per feature.
 Deactivate groups like this:
 
 ```java
-rollout.deactivate_group("chat", "all");
+rollout.deactivateGroup("chat", "all");
 ```
 
 ## Specific Users (WIP)

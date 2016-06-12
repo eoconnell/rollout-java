@@ -60,7 +60,7 @@ public class Feature {
 		percentage = newPercentage;
 	}
 
-	public Object serialize() {
+	public String serialize() {
 		return String.format("%s|%s", percentage, groups.stream().collect(Collectors.joining(",")));
 	}
 

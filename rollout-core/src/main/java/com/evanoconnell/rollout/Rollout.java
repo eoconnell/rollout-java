@@ -57,7 +57,7 @@ public class Rollout<U extends IRolloutUser> {
 		storage.set(key(f.getName()), f.serialize());
 	}
 
-	private Object key(String feature) {
+	private String key(String feature) {
 		return "feature:"+feature;
 	}
 

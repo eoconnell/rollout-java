@@ -5,17 +5,17 @@ import java.util.Map;
 
 public class MapStorage implements IRolloutStorage {
 
-	private Map<Object, Object> map;
+	private Map<String, String> map;
 
 	public MapStorage() {
-		this.map = new HashMap<Object,Object>();
+		this.map = new HashMap<String, String>();
 	}
 
-	public void set(Object key, Object value) {
+	public void set(String key, String value) {
 		map.put(key, value);
 	}
 
-	public Object get(Object key) {
+	public String get(String key) {
 		return map.get(key);
 	}
 }

@@ -89,7 +89,7 @@ Deactivate them like this:
 rollout.deactivateUser("chat", user);
 ```
 
-## User Percentages (WIP)
+## User Percentages
 
 If you're rolling out a new feature, you might want to test the waters by
 slowly enabling it for a percentage of your users.
@@ -113,7 +113,6 @@ would remain in as the percentage increases.
 Deactivate all percentages like this:
 
 ```java
-// TODO
 rollout.deactivatePercentage("chat");
 ```
 

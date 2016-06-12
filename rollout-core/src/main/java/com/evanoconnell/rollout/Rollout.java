@@ -73,4 +73,8 @@ public class Rollout<U extends IRolloutUser> {
 		);
 	}
 
+	public void deactivatePercentage(String feature) {
+		activatePercentage(feature, 0);
+	}
+
 }

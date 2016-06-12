@@ -115,6 +115,17 @@ public abstract class RolloutContractTest<U extends IRolloutUser> {
 		assertThat(rollout.isActive("chat", createNewRolloutUser(1)), is(false));
 	}
 
+	@Test
+	public void when_deactivating_a_percentage__the_feature_is_off_for_all() {
+		rollout.activatePercentage("chat", 100);
+
+		assertThat(rollout.isActive("chat", createNewRolloutUser(1)), is(true));
+
+		rollout.deactivatePercentage("chat");
+
+		assertThat(rollout.isActive("chat", createNewRolloutUser(1)), is(false));
+	}
+
 	/**
 	 * Activating features
 	 */

@@ -25,6 +25,14 @@ IRolloutStorage storage;
 Rollout<IRolloutUser> rollout = new Rollout<>(storage);
 ```
 
+You'll need to provide Rollout with your own storage, but that part is relatively simple. See the [relevant readme section](https://github.com/eoconnell/rollout-java#storage)
+
+Check if a feature is active for a particular user:
+
+```java
+rollout.isActive("chat", user); // => true/false
+```
+
 You can activate features using a number of different mechanisms: percentages, groups and by the user's id.
 
 ## Groups

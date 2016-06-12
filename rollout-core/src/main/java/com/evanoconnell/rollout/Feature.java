@@ -60,12 +60,12 @@ public class Feature {
 		percentage = newPercentage;
 	}
 
-	public Object getPercentage() {
-		return percentage;
-	}
-
 	public Object serialize() {
 		return String.format("%s|%s", percentage, groups.stream().collect(Collectors.joining(",")));
+	}
+
+	int getPercentage() {
+		return percentage;
 	}
 
 	private boolean userInPercentage(long id) {

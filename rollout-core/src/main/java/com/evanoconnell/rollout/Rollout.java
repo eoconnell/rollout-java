@@ -49,12 +49,12 @@ public class Rollout<U extends IRolloutUser> {
 	}
 
 	Feature get(String feature) {
-		Object value = storage.get(key(feature));
+		Object value = storage.read(key(feature));
 		return new Feature(feature, value);
 	}
 
 	private void save(Feature f) {
-		storage.set(key(f.getName()), f.serialize());
+		storage.write(key(f.getName()), f.serialize());
 	}
 
 	private String key(String feature) {

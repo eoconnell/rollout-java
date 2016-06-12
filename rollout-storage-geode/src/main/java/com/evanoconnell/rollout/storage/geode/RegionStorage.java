@@ -12,12 +12,12 @@ public class RegionStorage implements IRolloutStorage {
 	}
 
 	@Override
-	public void set(String key, String value) {
+	public void write(String key, String value) {
 		region.put(key, value);
 	}
 
 	@Override
-	public String get(String key) {
+	public String read(String key) {
 		return (String) region.get(key);
 	}
 }

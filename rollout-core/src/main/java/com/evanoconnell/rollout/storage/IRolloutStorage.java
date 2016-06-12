@@ -2,8 +2,8 @@ package com.evanoconnell.rollout.storage;
 
 public interface IRolloutStorage {
 
-	void set(String key, String value);
+	void write(String key, String value);
 
-	String get(String key);
+	String read(String key);
 
 }

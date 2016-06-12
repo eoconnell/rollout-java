@@ -14,16 +14,16 @@ public abstract class StorageContractTest {
 	public void it_can_get_stored_features_by_key() {
 		IRolloutStorage storage = createNewStorage();
 
-		storage.set("key", "value");
+		storage.write("key", "value");
 
-		assertThat(storage.get("key"), is((Object) "value"));
+		assertThat(storage.read("key"), is("value"));
 	}
 
 	@Test
 	public void the_value_of_an_unknown_key_is_null() {
 		IRolloutStorage storage = createNewStorage();
 
-		assertThat(storage.get("key"), is(nullValue()));
+		assertThat(storage.read("key"), is(nullValue()));
 	}
 
 }

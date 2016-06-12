@@ -11,11 +11,11 @@ public class MapStorage implements IRolloutStorage {
 		this.map = new HashMap<String, String>();
 	}
 
-	public void set(String key, String value) {
+	public void write(String key, String value) {
 		map.put(key, value);
 	}
 
-	public String get(String key) {
+	public String read(String key) {
 		return map.get(key);
 	}
 }

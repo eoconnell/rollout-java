@@ -1,5 +1,7 @@
 # rollout (for Java)
 
+[![Build Status](https://secure.travis-ci.org/eoconnell/rollout-java.svg)](http://travis-ci.org/eoconnell/rollout-java)
+
 Feature flippers for Java. A port of James Golick's/FetLife's [rollout](https://github.com/FetLife/rollout).
 
 Features marked with `TODO` are still being worked.

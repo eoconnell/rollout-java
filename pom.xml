@@ -14,6 +14,17 @@
     <developerConnection>scm:git:git@github.com:eoconnell/rollout-java.git</developerConnection>
   </scm>
 
+  <licenses>
+    <license>
+    <name>MIT License</name>
+    <url>http://www.opensource.org/licenses/mit-license.php</url>
+    <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <developers>
+  </developers>
+
   <modules>
     <module>rollout-core</module>
     <module>rollout-storage</module>

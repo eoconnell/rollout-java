@@ -1,6 +1,7 @@
 # rollout (for Java)
 
 [![Build Status](https://secure.travis-ci.org/eoconnell/rollout-java.svg)](http://travis-ci.org/eoconnell/rollout-java)
+[![CodeCov](https://codecov.io/github/eoconnell/rollout-java/coverage.svg?branch=master)](https://codecov.io/github/eoconnell/rollout-java)
 
 Feature flippers for Java. A port of James Golick's/FetLife's [rollout](https://github.com/FetLife/rollout).
 

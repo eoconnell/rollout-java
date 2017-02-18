@@ -36,6 +36,18 @@ public class Rollout<U extends IRolloutUser> {
 		);
 	}
 
+	public void activateUser(String feature, U user) {
+		withFeature(feature, (f) ->
+			f.addUser(user.getId())
+		);
+	}
+
+	public void deactivateUser(String feature, U user) {
+		withFeature(feature, (f) ->
+			f.removeUser(user.getId())
+		);
+	}
+
 	public boolean isActive(String feature, U user) {
 		Feature f = get(feature);
 		return f.isActive(this, user);

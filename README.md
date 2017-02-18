@@ -65,20 +65,18 @@ Deactivate groups like this:
 rollout.deactivateGroup("chat", "all");
 ```
 
-## Specific Users (WIP)
+## Specific Users
 
 You might want to let a specific user into a beta test or something. If that
 user isn't part of an existing group, you can let them in specifically:
 
 ```java
-// TODO
 rollout.activateUser("chat", user);
 ```
 
 Deactivate them like this:
 
 ```java
-// TODO
 rollout.deactivateUser("chat", user);
 ```
 

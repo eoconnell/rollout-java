@@ -127,6 +127,21 @@ public abstract class RolloutContractTest<U extends IRolloutUser> {
 	}
 
 	/**
+	 * User
+	 */
+
+	@Test
+	public void activating_and_deactivating_for_user() {
+		rollout.activateUser("chat", createNewRolloutUser(1));
+
+		assertThat(rollout.isActive("chat", createNewRolloutUser(1)), is(true));
+
+		rollout.deactivateUser("chat", createNewRolloutUser(1));
+
+		assertThat(rollout.isActive("chat", createNewRolloutUser(1)), is(false));
+	}
+
+	/**
 	 * Activating features
 	 */
 	@Ignore("pending...")

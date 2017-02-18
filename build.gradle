@@ -1,0 +1,49 @@
+allprojects  {
+  apply plugin: 'base'
+  apply plugin: 'jacoco'
+
+  group = 'com.evanoconnell'
+  version = '0.1.0-SNAPSHOT'
+
+  repositories {
+    mavenCentral()
+  }
+
+}
+
+subprojects {
+  apply plugin: 'java'
+
+  dependencies {
+    testCompile 'junit:junit:4.12'
+  }
+ 
+  jacocoTestReport {
+    reports {
+      html.enabled = true
+      xml.enabled = true // coveralls plugin depends on xml format report
+      csv.enabled = false
+    }
+  }
+
+}
+
+task jacocoRootReport(type: org.gradle.testing.jacoco.tasks.JacocoReport) {
+  dependsOn = subprojects.test
+  sourceDirectories = files(subprojects.sourceSets.main.allSource.srcDirs)
+  classDirectories =  files(subprojects.sourceSets.main.output)
+  executionData = files(subprojects.jacocoTestReport.executionData)
+  reports {
+    html.enabled = true
+    xml.enabled = true
+    csv.enabled = false
+  }
+  onlyIf = {
+    true
+  }
+  doFirst {
+    executionData = files(executionData.findAll {
+      it.exists()
+    })
+  }
+}

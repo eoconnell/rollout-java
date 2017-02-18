@@ -1,0 +1,6 @@
+
+description = 'Rollout Local Storage'
+dependencies {
+    compile project(':rollout-core')
+    testCompile project(':rollout-test-contract')
+}

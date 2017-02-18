@@ -10,12 +10,14 @@ public class Feature {
 
 	private String name;
 	private Set<String> groups;
+	private Set<Long> users;
 	private int percentage;
 	private CRC32 crc = new CRC32();
 
 	public Feature(String name) {
 		this.name = name;
 		groups = new HashSet<>();
+		users = new HashSet<>();
 	}
 
 	public Feature(String name, Object serializedValue) {
@@ -30,8 +32,19 @@ public class Feature {
 		groups.add(group);
 	}
 
+	public void addUser(long userId) {
+		users.add(userId);
+	}
+
+	public void removeUser(long userId) {
+		users.remove(userId);
+	}
+
 	public <U extends IRolloutUser> boolean isActive(Rollout<U> rollout, U user) {
 		if (user !=null && userInPercentage(user.getId())) {
+			return true;
+		}
+		if (user !=null && userInActiveUsers(user.getId())) {
 			return true;
 		}
 		for (String group : groups) {
@@ -48,6 +61,10 @@ public class Feature {
 		groups.remove(group);
 	}
 
+	public Set<Long> getUsers() {
+		return new HashSet<>(users);
+	}
+
 	public Set<String> getGroups() {
 		return new HashSet<>(groups);
 	}
@@ -60,16 +77,16 @@ public class Feature {
 		percentage = newPercentage;
 	}
 
-	public String serialize() {
-		return String.format("%s|%s", percentage, groups.stream().collect(Collectors.joining(",")));
-	}
-
 	int getPercentage() {
 		return percentage;
 	}
 
 	private boolean userInPercentage(long id) {
 		return crc32(id) % 100 < percentage;
+	}
+
+	private boolean userInActiveUsers(long id) {
+		return users.contains(id);
 	}
 
 	private long crc32(long i) {
@@ -80,6 +97,15 @@ public class Feature {
 		return value;
 	}
 
+	public String serialize() {
+		return String.format(
+			"%s|%s|%s", 
+			percentage, 
+			users.stream().map(Object::toString).collect(Collectors.joining(",")), 
+			groups.stream().collect(Collectors.joining(","))
+		);
+	}
+
 	private void deserialize(String serializedValue) {
 		String[] parts = serializedValue.split("\\|");
 		String p = parts[0];
@@ -87,7 +113,15 @@ public class Feature {
 			percentage = Integer.parseInt(parts[0]);
 		}
 		if (parts.length > 1) {
-			String[] groupNames = parts[1].split(",");
+			String[] userIds = parts[1].split(",");
+			for (String u : userIds) {
+				if (!u.isEmpty()) {
+					users.add(Long.parseLong(u));
+				}
+			}
+		}
+		if (parts.length > 2) {
+			String[] groupNames = parts[2].split(",");
 			for (String g : groupNames) {
 				groups.add(g);
 			}

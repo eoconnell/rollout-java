@@ -1,0 +1,10 @@
+rootProject.name = 'rollout-java'
+include ':rollout-core'
+include ':rollout-storage-geode'
+include ':rollout-storage-local'
+include ':rollout-test-contract'
+
+project(':rollout-core').projectDir = "$rootDir/rollout-core" as File
+project(':rollout-storage-geode').projectDir = "$rootDir/rollout-storage-geode" as File
+project(':rollout-storage-local').projectDir = "$rootDir/rollout-storage-local" as File
+project(':rollout-test-contract').projectDir = "$rootDir/rollout-test-contract" as File

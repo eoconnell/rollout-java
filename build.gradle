@@ -1,3 +1,10 @@
+plugins {
+  id 'com.github.kt3k.coveralls' version '2.6.3'
+}
+
+coveralls.jacocoReportPath = 'build/reports/jacoco/jacocoRootReport/jacocoRootReport.xml'
+coveralls.sourceDirs = ['rollout-core/src/main/java', 'rollout-storage-local/src/main/java', 'rollout-storate-geode/src/main/java', 'rollout-test-contract/src/main/java']
+
 allprojects  {
   apply plugin: 'base'
   apply plugin: 'jacoco'

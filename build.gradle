@@ -8,6 +8,7 @@ coveralls.sourceDirs = ['rollout-core/src/main/java', 'rollout-storage-local/src
 allprojects  {
   apply plugin: 'base'
   apply plugin: 'jacoco'
+  apply plugin: 'maven'
 
   group = 'com.evanoconnell'
   version = '0.1.0-SNAPSHOT'

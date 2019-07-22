@@ -15,7 +15,7 @@ With Maven:
 <dependency>
 	<groupId>net.ocnl</groupId>
 	<artifactId>rollout-core</artifactId>
-	<version>0.1.0-SNAPSHOT</version>
+	<version>0.3.0-SNAPSHOT</version>
 </dependency>
 ```
 
@@ -23,7 +23,7 @@ With Gradle:
 
 ```groovy
 dependencies {
-	compile 'net.ocnl:rollout-core:0.1.0-SNAPSHOT'
+	compile 'net.ocnl:rollout-core:0.3.0-SNAPSHOT'
 }
 ```
 

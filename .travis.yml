@@ -1,8 +1,8 @@
 ---
 language: java
-jdk:
-- oraclejdk8
-script:
-- ./gradlew test
-after_success:
-- ./gradlew jacocoRootReport coveralls
+
+jdk: openjdk8
+
+script: ./gradlew test
+
+after_success: ./gradlew jacocoRootReport coveralls

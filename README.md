@@ -13,7 +13,7 @@ With Maven:
 
 ```xml
 <dependency>
-	<groupId>com.evanoconnell</groupId>
+	<groupId>net.ocnl</groupId>
 	<artifactId>rollout-core</artifactId>
 	<version>0.1.0-SNAPSHOT</version>
 </dependency>
@@ -23,7 +23,7 @@ With Gradle:
 
 ```groovy
 dependencies {
-	compile 'com.evanoconnell:rollout-core:0.1.0-SNAPSHOT'
+	compile 'net.ocnl:rollout-core:0.1.0-SNAPSHOT'
 }
 ```
 

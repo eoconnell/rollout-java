@@ -13,7 +13,7 @@ allprojects  {
   apply plugin: 'jacoco'
   apply plugin: 'maven'
 
-  group = 'com.evanoconnell'
+  group = 'net.ocnl'
   version = '0.2.0-SNAPSHOT'
 
   repositories {

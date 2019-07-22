@@ -19,6 +19,14 @@ With Maven:
 </dependency>
 ```
 
+With Gradle:
+
+```groovy
+dependencies {
+	compile 'com.evanoconnell:rollout-core:0.1.0-SNAPSHOT'
+}
+```
+
 ## Usage
 
 Initialize a Rollout object.
